@@ -132,9 +132,17 @@
       const [bannerUrl, setBannerUrl] = useState(() => localStorage.getItem('gf_banner') || DEFAULT_BANNER);
       const [whatsappNumber, setWhatsappNumber] = useState(() => localStorage.getItem('gf_whatsapp') || '573000000000');
       
+      // CONFIGURACIÓN DE FIREBASE INTEGRADA (Rellena aquí tus 6 claves reales)
       const [fbConfig, setFbConfig] = useState(() => {
         const saved = localStorage.getItem('gf_fb_config');
-        return saved ? JSON.parse(saved) : { apiKey: '', authDomain: '', projectId: '', storageBucket: '', messagingSenderId: '', appId: '' };
+        return saved ? JSON.parse(saved) : { 
+          apiKey: "PON_AQUI_TU_API_KEY", 
+          authDomain: "tu-proyecto.firebaseapp.com", 
+          projectId: "tu-proyecto-id", 
+          storageBucket: "tu-proyecto.appspot.com", 
+          messagingSenderId: "123456789", 
+          appId: "1:12345:web:abc" 
+        };
       });
 
       const [showFirebaseModal, setShowFirebaseModal] = useState(false);
@@ -160,7 +168,7 @@
       useEffect(() => { localStorage.setItem('gf_fb_config', JSON.stringify(fbConfig)); }, [fbConfig]);
 
       useEffect(() => {
-        if (!fbConfig.apiKey || !fbConfig.projectId) {
+        if (!fbConfig.apiKey || !fbConfig.projectId || fbConfig.apiKey === "PON_AQUI_TU_API_KEY") {
           setSyncStatus('⚠️ Firebase no configurado (Haz clic en "Configurar Firebase")');
           return;
         }
@@ -177,7 +185,7 @@
               if (data.logo) setLogoUrl(data.logo);
               if (data.banner) setBannerUrl(data.banner);
               if (data.whatsapp) setWhatsappNumber(data.whatsapp);
-              setSyncStatus('● Conectado y Sincronizado con Firestore');
+              setSyncStatus('● Conectado y Sincronizado en Vivo');
             }
           }, () => {});
 
