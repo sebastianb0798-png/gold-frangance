@@ -820,7 +820,7 @@
               ✕
             </button>
 
-            {/* Imagen corregida para que no se recorte */}
+            {/* Imagen completa y centrada */}
             <div className="w-full h-56 bg-neutral-950 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
               <img 
                 src={selectedProduct.image} 
@@ -833,9 +833,9 @@
             <h2 className="text-2xl font-bold mb-1 text-amber-400">{selectedProduct.name}</h2>
             <p className="text-sm text-neutral-400 mb-2">{selectedProduct.brand}</p>
             
-            {/* Descripción que faltaba */}
+            {/* Descripción protegida (muestra el texto o un detalle general si no tiene) */}
             <p className="text-neutral-300 text-sm mb-4 leading-relaxed bg-neutral-950/50 p-3 rounded-xl border border-neutral-800/50">
-              {selectedProduct.description}
+              {selectedProduct.description || selectedProduct.notes || "Fragancia exclusiva de alta duración y excelente proyección."}
             </p>
             
             <div className="flex items-center justify-between mb-6">
