@@ -127,6 +127,7 @@
         const local = localStorage.getItem('gf_products');
         return local ? JSON.parse(local) : INITIAL_PRODUCTS;
       });
+      const [selectedProduct, setSelectedProduct] = useState(null);
 
       const [logoUrl, setLogoUrl] = useState(() => localStorage.getItem('gf_logo') || DEFAULT_LOGO);
       const [bannerUrl, setBannerUrl] = useState(() => localStorage.getItem('gf_banner') || DEFAULT_BANNER);
